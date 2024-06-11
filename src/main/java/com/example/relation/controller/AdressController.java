@@ -11,12 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/adress")
+
 public class AdressController {
 
     @Autowired
@@ -69,7 +73,11 @@ public class AdressController {
     public ResponseEntity<Address> createonly(@RequestBody Address adress){
 
         Address adre= this.adressdao.createAdress(adress );
+
+
         return new ResponseEntity<>(adre, HttpStatus.CREATED);
+
+
     }
 
     //had route ila kan 3ndi user deja creer wbgit nsawb adress lih wnrbatha m3ah
@@ -78,8 +86,8 @@ public class AdressController {
 //            Address adres=new Address();
 //            adres.setStreetName(adress.getStreetName());
 //            adres.setAddress(adress.getAddress());
-//        User user=userDAO.getuserbyId(id).orElse(null);
-//        user.setAddress(adress);
+        User user=userDAO.getuserbyId(id).orElse(null);
+        user.setAddress(adress);
 //        adres.setUser(user);
 //            adress.setUser(user);
 //            this.userDAO.createuser(user);

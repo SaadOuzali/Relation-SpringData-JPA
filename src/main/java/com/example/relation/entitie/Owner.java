@@ -24,6 +24,7 @@ public class Owner {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Blog> blogList;
 
+
 //    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress_Id")

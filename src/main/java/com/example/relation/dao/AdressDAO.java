@@ -6,10 +6,12 @@ import com.example.relation.repositorie.AdressRepo;
 import com.example.relation.repositorie.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
 @Service
+@Transactional
 public class AdressDAO {
     @Autowired
     private AdressRepo adressrepo;
@@ -58,11 +60,12 @@ public class AdressDAO {
         System.out.println("adresss "+u.get().getAddress());
         Address address=u.get();
         address.setStreetName(adress.getStreetName());
-        if (u.isPresent()){
-            return   this.adressrepo.save(address);
-        }else {
-            return null;
-        }
+//        if (u.isPresent()){
+//            return   this.adressrepo.save(address);
+//        }else {
+//            return null;
+//        }
+        return address;
     }
 
 
